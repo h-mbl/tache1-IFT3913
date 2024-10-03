@@ -1,0 +1,206 @@
+<html><body><h1>currency_converter.py</h1>Killed 18 out of 37 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -2,7 +2,7 @@
+ from datetime import datetime,timedelta
+ class CurrencyConverter:
+     def __init__(self):
+-        self.rates = {}
++        self.rates = None
+         self.update_rates()
+ 
+     def update_rates(self):
+</pre><h3>Mutant 7</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -10,7 +10,7 @@
+         self.rates = {
+             "USD": 1.0,
+             "EUR": 0.85,
+-            "GBP": 0.73,
++            "GBP": 1.73,
+             "JPY": 110.25,
+             "CAD": 1.25
+         }
+</pre><h3>Mutant 9</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -11,7 +11,7 @@
+             "USD": 1.0,
+             "EUR": 0.85,
+             "GBP": 0.73,
+-            "JPY": 110.25,
++            "JPY": 111.25,
+             "CAD": 1.25
+         }
+         self.last_update = datetime.now()
+</pre><h3>Mutant 11</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -12,7 +12,7 @@
+             "EUR": 0.85,
+             "GBP": 0.73,
+             "JPY": 110.25,
+-            "CAD": 1.25
++            "CAD": 2.25
+         }
+         self.last_update = datetime.now()
+ 
+</pre><h3>Mutant 22</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -27,7 +27,7 @@
+         usd_amount = amount / self.rates[from_currency]
+         converted_amount = usd_amount * self.rates[to_currency]
+ 
+-        return round(converted_amount, 2)
++        return round(converted_amount, 3)
+ 
+     def is_update_needed(self):
+         return (datetime.now() - self.last_update) >= timedelta(minutes=1)
+</pre><h3>Mutant 24</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -30,7 +30,7 @@
+         return round(converted_amount, 2)
+ 
+     def is_update_needed(self):
+-        return (datetime.now() - self.last_update) >= timedelta(minutes=1)
++        return (datetime.now() - self.last_update) > timedelta(minutes=1)
+ 
+     def get_supported_currencies(self):
+         return list(self.rates.keys())
+</pre><h3>Mutant 26</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -37,7 +37,7 @@
+ 
+ 
+ # Exemple d'utilisation
+-if __name__ == "__main__":
++if __name__ != "__main__":
+     converter = CurrencyConverter()
+ 
+     amount = 100
+</pre><h3>Mutant 27</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -37,7 +37,7 @@
+ 
+ 
+ # Exemple d'utilisation
+-if __name__ == "__main__":
++if __name__ == "XX__main__XX":
+     converter = CurrencyConverter()
+ 
+     amount = 100
+</pre><h3>Mutant 28</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -38,7 +38,7 @@
+ 
+ # Exemple d'utilisation
+ if __name__ == "__main__":
+-    converter = CurrencyConverter()
++    converter = None
+ 
+     amount = 100
+     from_currency = "USD"
+</pre><h3>Mutant 29</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -40,7 +40,7 @@
+ if __name__ == "__main__":
+     converter = CurrencyConverter()
+ 
+-    amount = 100
++    amount = 101
+     from_currency = "USD"
+     to_currency = "EUR"
+ 
+</pre><h3>Mutant 30</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -40,7 +40,7 @@
+ if __name__ == "__main__":
+     converter = CurrencyConverter()
+ 
+-    amount = 100
++    amount = None
+     from_currency = "USD"
+     to_currency = "EUR"
+ 
+</pre><h3>Mutant 31</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -41,7 +41,7 @@
+     converter = CurrencyConverter()
+ 
+     amount = 100
+-    from_currency = "USD"
++    from_currency = "XXUSDXX"
+     to_currency = "EUR"
+ 
+     result = converter.convert(amount, from_currency, to_currency)
+</pre><h3>Mutant 32</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -41,7 +41,7 @@
+     converter = CurrencyConverter()
+ 
+     amount = 100
+-    from_currency = "USD"
++    from_currency = None
+     to_currency = "EUR"
+ 
+     result = converter.convert(amount, from_currency, to_currency)
+</pre><h3>Mutant 33</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -42,7 +42,7 @@
+ 
+     amount = 100
+     from_currency = "USD"
+-    to_currency = "EUR"
++    to_currency = "XXEURXX"
+ 
+     result = converter.convert(amount, from_currency, to_currency)
+     print(f"{amount} {from_currency} = {result} {to_currency}")
+</pre><h3>Mutant 34</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -42,7 +42,7 @@
+ 
+     amount = 100
+     from_currency = "USD"
+-    to_currency = "EUR"
++    to_currency = None
+ 
+     result = converter.convert(amount, from_currency, to_currency)
+     print(f"{amount} {from_currency} = {result} {to_currency}")
+</pre><h3>Mutant 35</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -44,7 +44,7 @@
+     from_currency = "USD"
+     to_currency = "EUR"
+ 
+-    result = converter.convert(amount, from_currency, to_currency)
++    result = None
+     print(f"{amount} {from_currency} = {result} {to_currency}")
+ 
+     print("Devises supportees:", converter.get_supported_currencies())
+</pre><h3>Mutant 36</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -45,6 +45,6 @@
+     to_currency = "EUR"
+ 
+     result = converter.convert(amount, from_currency, to_currency)
+-    print(f"{amount} {from_currency} = {result} {to_currency}")
++    print(f"XX{amount} {from_currency} = {result} {to_currency}XX")
+ 
+     print("Devises supportees:", converter.get_supported_currencies())
+</pre><h3>Mutant 38</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -21,7 +21,7 @@
+             self.update_rates()
+ 
+         if from_currency not in self.rates or to_currency not in self.rates:
+-            raise ValueError("Devise non supportee")
++            raise ValueError("XXDevise non supporteeXX")
+ 
+         # Convertir d'abord en USD, puis dans la devise cible
+         usd_amount = amount / self.rates[from_currency]
+</pre><h3>Mutant 39</h3><pre>--- currency_converter.py
++++ currency_converter.py
+@@ -47,4 +47,4 @@
+     result = converter.convert(amount, from_currency, to_currency)
+     print(f"{amount} {from_currency} = {result} {to_currency}")
+ 
+-    print("Devises supportees:", converter.get_supported_currencies())
++    print("XXDevises supportees:XX", converter.get_supported_currencies())
+</pre></body></html>
